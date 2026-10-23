@@ -1,0 +1,256 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nova AI | SEO Analyzer</title>
+  <meta name="description" content="A futuristic AI-inspired website SEO analyzer dashboard.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#">
+        <span class="brand-icon">✳</span>
+        <span>
+          <strong>Nova<span class="gradient-text">AI</span></strong>
+          <small>Intelligent SEO Studio</small>
+        </span>
+      </a>
+
+      <div class="side-label">WORKSPACE</div>
+      <nav class="navigation">
+        <a href="#home" class="nav-link active">
+          <span>⌂</span> Dashboard
+        </a>
+        <a href="#analyzer" class="nav-link">
+          <span>⊕</span> New Analysis
+        </a>
+        <a href="#results" class="nav-link">
+          <span>◷</span> SEO Results
+        </a>
+        <a href="#recommendations" class="nav-link">
+          <span>✧</span> AI Insights
+        </a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="upgrade-card">
+          <div class="upgrade-icon">✦</div>
+          <h3>Level up your SEO</h3>
+          <p>Discover opportunities to improve your website's search visibility.</p>
+          <a href="#analyzer" class="upgrade-link">Analyze website ↗</a>
+        </div>
+        <div class="profile">
+          <div class="avatar">N</div>
+          <div>
+            <strong>SEO Workspace</strong>
+            <small>Personal dashboard</small>
+          </div>
+          <span class="online-dot"></span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content" id="home">
+      <header class="topbar">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
+        <div class="breadcrumb">Workspace <span>/</span> <strong>SEO Dashboard</strong></div>
+        <div class="topbar-right">
+          <span class="live-status"><i></i> Analyzer ready</span>
+          <div class="top-avatar">N</div>
+        </div>
+      </header>
+
+      <div class="page-content">
+        <section class="hero" id="analyzer">
+          <div class="hero-glow"></div>
+          <div class="hero-copy">
+            <div class="eyebrow"><span>✦</span> SMART SEO INTELLIGENCE</div>
+            <h1>Make your website<br> <span class="gradient-text">search-ready.</span></h1>
+            <p>Analyze your homepage, uncover SEO gaps, and discover your next opportunities for improvement.</p>
+
+            <form id="seoForm" class="url-form">
+              <span class="url-icon">↗</span>
+              <input id="websiteUrl" type="text"
+                placeholder="https://yourwebsite.com"
+                aria-label="Website homepage URL"
+                required>
+              <button type="submit" id="analyzeBtn">
+                <span id="buttonText">Analyze site</span>
+                <span>→</span>
+              </button>
+            </form>
+            <div class="hero-footnote">
+              <span>◈</span> Homepage analysis
+              <span class="footnote-divider">•</span>
+              No API key required to start
+            </div>
+          </div>
+
+          <div class="hero-art" aria-hidden="true">
+            <div class="orbit orbit-one"></div>
+            <div class="orbit orbit-two"></div>
+            <div class="floating-chip chip-top">✦ AI</div>
+            <div class="floating-chip chip-right">↗</div>
+            <div class="scanner-card">
+              <div class="scanner-top">
+                <span class="window-dots"><i></i><i></i><i></i></span>
+                <span>WEB ANALYTICS</span>
+              </div>
+              <div class="scanner-globe">◎</div>
+              <div class="scanner-line wide"></div>
+              <div class="scanner-line medium"></div>
+              <div class="scanner-line short"></div>
+              <div class="scanner-footer"><span></span> SCANNING READY</div>
+            </div>
+            <div class="seo-orb">
+              <span>SEO</span>
+              <small>INSIGHTS</small>
+            </div>
+          </div>
+        </section>
+
+        <div id="message" class="message" role="status" aria-live="polite"></div>
+
+        <section class="section-heading">
+          <div>
+            <div class="eyebrow muted">YOUR PERFORMANCE</div>
+            <h2>Analysis overview</h2>
+          </div>
+          <span class="date-label">⌁ <span id="analysisDate">Waiting for analysis</span></span>
+        </section>
+
+        <section class="overview-grid">
+          <article class="panel website-panel">
+            <div class="panel-heading">
+              <span class="mini-icon blue">◎</span>
+              <span>Website overview</span>
+              <span class="panel-menu">•••</span>
+            </div>
+            <div class="preview-box" id="previewBox">
+              <div class="preview-placeholder">
+                <span class="preview-symbol">⌘</span>
+                <strong>Your website preview</strong>
+                <small>Analyze a homepage to begin</small>
+              </div>
+            </div>
+            <div class="website-details">
+              <div>
+                <h3 id="siteName">No website analyzed</h3>
+                <p id="siteUrl">Enter a URL above to get started</p>
+              </div>
+              <span class="site-status" id="siteStatus">Waiting</span>
+            </div>
+          </article>
+
+          <article class="panel score-panel">
+            <div class="panel-heading">
+              <span class="mini-icon purple">✧</span>
+              <span>SEO health score</span>
+            </div>
+            <div class="score-wrap">
+              <svg class="score-ring" viewBox="0 0 180 180" aria-label="SEO score">
+                <circle class="ring-track" cx="90" cy="90" r="74"></circle>
+                <circle class="ring-value" id="scoreRing" cx="90" cy="90" r="74"></circle>
+              </svg>
+              <div class="score-center">
+                <strong id="scoreValue">--</strong>
+                <span>/ 100</span>
+              </div>
+            </div>
+            <div class="score-status" id="scoreStatus">Ready to analyze</div>
+            <p class="muted-text">Based on available homepage checks</p>
+          </article>
+
+          <article class="panel stats-panel">
+            <div class="panel-heading">
+              <span class="mini-icon green">↗</span>
+              <span>Check summary</span>
+            </div>
+            <div class="stat-row">
+              <div class="stat-icon green-bg">✓</div>
+              <div class="stat-copy"><span>Passed checks</span><strong id="passedCount">--</strong></div>
+              <span class="stat-indicator green-text">Passed</span>
+            </div>
+            <div class="stat-row">
+              <div class="stat-icon orange-bg">!</div>
+              <div class="stat-copy"><span>Needs attention</span><strong id="issueCount">--</strong></div>
+              <span class="stat-indicator orange-text">Review</span>
+            </div>
+            <div class="stat-row">
+              <div class="stat-icon purple-bg">✦</div>
+              <div class="stat-copy"><span>Recommendations</span><strong id="recommendationCount">--</strong></div>
+              <span class="stat-indicator purple-text">Insights</span>
+            </div>
+          </article>
+        </section>
+
+        <section class="content-grid" id="results">
+          <article class="panel checks-panel">
+            <div class="panel-heading checks-heading">
+              <div>
+                <div class="eyebrow muted">HOMEPAGE REPORT</div>
+                <h2>SEO diagnostics</h2>
+              </div>
+              <span class="report-badge">● Live report</span>
+            </div>
+            <div class="check-list" id="checkList">
+              <div class="empty-state">
+                <span>⌕</span>
+                <strong>Your report will appear here</strong>
+                <p>Enter your homepage URL and click Analyze site.</p>
+              </div>
+            </div>
+          </article>
+
+          <div class="right-column">
+            <article class="panel details-panel">
+              <div class="panel-heading">
+                <span class="mini-icon blue">◈</span>
+                <span>Quick insights</span>
+              </div>
+              <div class="detail-row">
+                <span>Page title</span><strong id="detailTitle">—</strong>
+              </div>
+              <div class="detail-row">
+                <span>Description</span><strong id="detailDescription">—</strong>
+              </div>
+              <div class="detail-row">
+                <span>Language</span><strong id="detailLanguage">—</strong>
+              </div>
+              <div class="detail-row">
+                <span>Connection</span><strong id="detailHttps">—</strong>
+              </div>
+              <div class="detail-row">
+                <span>Page preview</span><strong id="detailImage">—</strong>
+              </div>
+            </article>
+
+            <article class="panel recommendations-panel" id="recommendations">
+              <div class="panel-heading">
+                <span class="mini-icon purple">✦</span>
+                <span>Smart recommendations</span>
+              </div>
+              <p class="recommendation-intro">Actionable suggestions based on your homepage checks.</p>
+              <div id="recommendationList">
+                <div class="empty-recommendation">Your personalized suggestions will appear here after analysis.</div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <footer class="footer">
+          <span>✳ NovaAI <span class="footer-separator">/</span> SEO Studio</span>
+          <span>Simple insights. Smarter improvements.</span>
+        </footer>
+      </div>
+    </main>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
